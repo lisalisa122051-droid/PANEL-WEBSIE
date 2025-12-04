@@ -1,0 +1,94 @@
+/* --- Global Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0d1117; /* Hitam gelap */
+    color: #ffffff; /* Putih */
+}
+
+/* --- Transisi Semen (Fade-In Saat Load) --- */
+body.initial-load {
+    opacity: 0;
+}
+body.is-loaded {
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Durasi 1 detik untuk transisi halus */
+}
+
+/* --- Cyber Background Effect --- */
+.cyber-bg {
+    background-color: #0d1117;
+    background-image: 
+        linear-gradient(rgba(15, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* --- Neon Text Effect --- */
+.text-neon {
+    color: #0ff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+}
+
+/* --- Navigasi (Efek Cahaya/Glow) --- */
+.nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+    color: #ffffff;
+    font-weight: 600;
+    /* Pastikan link mengisi lebar penuh di mode vertikal */
+    width: 100%; 
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+.nav-link:last-child {
+    border-bottom: none;
+}
+.nav-link:hover, .nav-link:focus { 
+    color: #4ff; /* Biru Neon Lebih Terang */
+    background-color: rgba(0, 255, 255, 0.1);
+    /* Cahaya lebih kuat untuk Blog Artikel dan Panel Admin */
+    text-shadow: 0 0 12px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 0.7); 
+}
+
+/* --- Kartu Produk/Fitur (Shine/3D Effect) --- */
+.product-card, .feature-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-color: #1f2937 !important;
+    margin-bottom: 1rem; 
+}
+
+.product-card:active, .product-card.shining, .feature-card:active {
+    /* Efek naik/maju sedikit membesar saat disentuh */
+    transform: scale(1.02);
+    /* Efek shine/glow pada batas */
+    border-color: #0ff !important;
+    box-shadow: 
+        0 0 5px rgba(0, 255, 255, 0.7), 
+        0 5px 10px rgba(0, 0, 0, 0.5); 
+}
+.product-card.shining { animation: shine 0.5s forwards; }
+
+@keyframes shine {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* --- Glow Button Effect --- */
+.glow-button {
+    transition: all 0.3s ease;
+}
+.glow-button:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* --- Modal Styling --- */
+.modal {
+    background-color: rgba(0, 0, 0, 0.7); /* Background gelap transparan untuk modal */
+}
+
