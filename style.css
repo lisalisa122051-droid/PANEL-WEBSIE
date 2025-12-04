@@ -1,94 +1,112 @@
-/* --- Global Styles --- */
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0d1117; /* Hitam gelap */
-    color: #ffffff; /* Putih */
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    scroll-behavior: smooth;
 }
 
-/* --- Transisi Semen (Fade-In Saat Load) --- */
-body.initial-load {
+body {
+    background: #020a18;
+    color: #fff;
+}
+
+/* ========= GLOBAL ANIMATIONS ========= */
+.fadeInPop {
+    animation: fadeInPop .8s ease forwards;
     opacity: 0;
 }
-body.is-loaded {
-    opacity: 1;
-    transition: opacity 1s ease-out; /* Durasi 1 detik untuk transisi halus */
+@keyframes fadeInPop {
+    0% { opacity:0; transform: scale(.85); }
+    100% { opacity:1; transform: scale(1); }
 }
 
-/* --- Cyber Background Effect --- */
-.cyber-bg {
-    background-color: #0d1117;
-    background-image: 
-        linear-gradient(rgba(15, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
+/* ========= NAVBAR ========= */
+.navbar {
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,30,.6);
+    backdrop-filter: blur(10px);
 }
-
-/* --- Neon Text Effect --- */
-.text-neon {
-    color: #0ff;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+.logo {
+    width: 45px; margin-right: 15px; border-radius: 50%;
+    filter: drop-shadow(0 0 10px cyan);
 }
+.title { font-size: 24px; color: cyan; text-shadow: 0 0 10px cyan; }
 
-/* --- Navigasi (Efek Cahaya/Glow) --- */
-.nav-link {
-    transition: all 0.3s ease;
-    position: relative;
-    color: #ffffff;
-    font-weight: 600;
-    /* Pastikan link mengisi lebar penuh di mode vertikal */
-    width: 100%; 
-    padding: 10px 0;
+/* ========= HERO ========= */
+.hero {
+    text-align: center; padding: 40px 0;
+}
+.hero h2 {
+    color: #00eaff;
+    text-shadow: 0 0 20px #00eaff;
+    font-size: 28px;
+}
+.sub { color: #a8b2d1; }
+
+/* ========= PRODUCT CARD ========= */
+.product-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    padding: 30px;
+}
+.card {
+    padding: 25px;
+    background: rgba(0,10,30,.7);
+    border-radius: 15px;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-}
-.nav-link:last-child {
-    border-bottom: none;
-}
-.nav-link:hover, .nav-link:focus { 
-    color: #4ff; /* Biru Neon Lebih Terang */
-    background-color: rgba(0, 255, 255, 0.1);
-    /* Cahaya lebih kuat untuk Blog Artikel dan Panel Admin */
-    text-shadow: 0 0 12px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 0.7); 
+    transition: .3s;
+    border: 1px solid cyan;
+    box-shadow: 0 0 10px cyan;
+    cursor: pointer;
 }
 
-/* --- Kartu Produk/Fitur (Shine/3D Effect) --- */
-.product-card, .feature-card {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+/* 3D Touch + Glow Hover */
+.card:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 0 25px #00eaff, 0 0 55px #00eaff;
+}
+
+/* Button With Shine Effect */
+.buyBtn {
+    background: #00121e;
+    color: cyan;
+    margin-top: 10px;
+    padding: 7px 15px;
+    border-radius: 10px;
+    border: 1px solid cyan;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-    border-color: #1f2937 !important;
-    margin-bottom: 1rem; 
 }
-
-.product-card:active, .product-card.shining, .feature-card:active {
-    /* Efek naik/maju sedikit membesar saat disentuh */
-    transform: scale(1.02);
-    /* Efek shine/glow pada batas */
-    border-color: #0ff !important;
-    box-shadow: 
-        0 0 5px rgba(0, 255, 255, 0.7), 
-        0 5px 10px rgba(0, 0, 0, 0.5); 
+.buyBtn::after {
+    content:"";
+    position:absolute; top:0; left:-100%;
+    width:100%; height:100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.6), transparent);
+    animation: shine 2s infinite;
 }
-.product-card.shining { animation: shine 0.5s forwards; }
-
 @keyframes shine {
-    0% { opacity: 1; }
-    50% { opacity: 1; }
-    100% { opacity: 1; }
+    0% { left:-100%; }
+    100% { left:100%; }
 }
 
-/* --- Glow Button Effect --- */
-.glow-button {
-    transition: all 0.3s ease;
-}
-.glow-button:hover {
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
-    background-color: rgba(0, 255, 255, 0.2);
+.features, .contact {
+    text-align: center; padding: 30px;
 }
 
-/* --- Modal Styling --- */
-.modal {
-    background-color: rgba(0, 0, 0, 0.7); /* Background gelap transparan untuk modal */
+.contact button {
+    margin: 10px; padding: 10px 20px;
+    border-radius: 10px; border: 1px solid #fff;
+    background: #003450; color: cyan;
+    transition: .3s;
+}
+.contact button:hover {
+    box-shadow: 0 0 15px cyan; transform: scale(1.05);
 }
 
+/* FOOTER */
+.footer {
+    text-align: center; padding: 20px; margin-top: 30px;
+    background: rgba(0,0,0,.4);
+}
