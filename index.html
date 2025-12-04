@@ -1,73 +1,82 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foxzi Panel Store</title>
+<title>Foxzi Panel Pterodactyl Shop</title>
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="https://files.catbox.moe/9fienz.jpg">
+<script src="script.js" defer></script>
 </head>
 <body>
 
-<header class="navbar fadeInPop">
-    <img src="https://files.catbox.moe/9fienz.jpg" class="logo">
-    <h1 class="title">FOXZI PANEL STORE</h1>
+<header class="glow-header">
+  <img src="https://files.catbox.moe/9fienz.jpg" class="logo">
+  <h1>FOXZI PANEL STORE</h1>
 </header>
 
-<section class="hero fadeInPop">
-    <h2>PANEL PTERODACTYL</h2>
-    <p class="sub">Cyber Technology Hosting — Fast, Secure & Global</p>
+<section class="features">
+  <h2>🔥 Fitur Unggulan Kami</h2>
+  <div class="feature-box">
+    <div><span>🔐</span> Keamanan Berlapis</div>
+    <div><span🛡️</span> Anti Pencurian Panel</div>
+    <div><span>🗄️</span> Database 837+ Deploy</div>
+    <div><span>📶</span> Uptime 99.7%</div>
+    <div><span>🌍</span> Jaringan Global</div>
+    <div><span>🤝</span> Layanan Pelanggan</div>
+  </div>
 </section>
 
-<section class="product-grid fadeInPop">
-    <!-- 2GB -->
-    <div class="card" data-plan="2GB - 1K">
-        <h3>2GB</h3>
-        <p class="price">Rp 1.000</p>
-        <button class="buyBtn">BUY</button>
-    </div>
-    <!-- 5GB -->
-    <div class="card" data-plan="5GB - 3K">
-        <h3>5GB</h3>
-        <p class="price">Rp 3.000</p>
-        <button class="buyBtn">BUY</button>
-    </div>
-    <!-- 10GB -->
-    <div class="card" data-plan="10GB - 7K">
-        <h3>10GB</h3>
-        <p class="price">Rp 7.000</p>
-        <button class="buyBtn">BUY</button>
-    </div>
-    <!-- UNLI -->
-    <div class="card" data-plan="UNLI - 10K">
-        <h3>UNLI</h3>
-        <p class="price">Rp 10.000</p>
-        <button class="buyBtn">BUY</button>
-    </div>
+<section class="products">
+  <h2>📦 Paket Panel Pterodactyl</h2>
+
+  <div class="product-card" data-price="1K">
+    <h3>2 GB PANEL</h3>
+    <p>💠 Cocok untuk bot medium</p>
+    <p>✔ Full Access Panel & Node</p>
+    <p>✔ Anti Suspend System</p>
+    <p>💰 Harga: <span class="price">1K</span></p>
+    <button class="buy-btn" onclick="chooseWA('2GB - 1K')">Buy Now</button>
+  </div>
+
+  <div class="product-card" data-price="3K">
+    <h3>5 GB PANEL</h3>
+    <p>💠 Sangat Stabil & Powerfull</p>
+    <p>✔ Anti Loss Data</p>
+    <p>✔ Include SSL Security</p>
+    <p>💰 Harga: <span class="price">3K</span></p>
+    <button class="buy-btn" onclick="chooseWA('5GB - 3K')">Buy Now</button>
+  </div>
+
+  <div class="product-card" data-price="7K">
+    <h3>10 GB PANEL</h3>
+    <p>💠 High Performance Runtime</p>
+    <p>✔ Premium Infrastructure</p>
+    <p>✔ Extreme Stability</p>
+    <p>💰 Harga: <span class="price">7K</span></p>
+    <button class="buy-btn" onclick="chooseWA('10GB - 7K')">Buy Now</button>
+  </div>
+
+  <div class="product-card" data-price="10K">
+    <h3>UNLIMITED PANEL</h3>
+    <p>💠 Unlimited RAM & CPU</p>
+    <p>✔ Dedicated Security System</p>
+    <p>✔ Auto Scaling Resources</p>
+    <p>💰 Harga: <span class="price">10K</span></p>
+    <button class="buy-btn" onclick="chooseWA('UNLI - 10K')">Buy Now</button>
+  </div>
 </section>
 
-<section class="features fadeInPop">
-    <h2>Fitur Unggulan 🔥</h2>
-    <ul>
-        <li>🛡️ Keamanan Berlapis</li>
-        <li>🔐 Anti Pencurian</li>
-        <li💾 Database 837+</li>
-        <li>⚡ UpTime Tinggi</li>
-        <li>🌍 Jaringan Global</li>
-        <li>👨‍💻 Layanan Pelanggan</li>
-    </ul>
-</section>
+<!-- WhatsApp Popup -->
+<div id="wa-popup" class="wa-popup">
+  <h3>Kirim via WhatsApp ke Admin?</h3>
+  <button onclick="sendWA(1)" class="wa-btn">WhatsApp Admin 1 (Adam)</button>
+  <button onclick="sendWA(2)" class="wa-btn">WhatsApp Admin 2 (WoolCynder)</button>
+  <button onclick="closePopup()" class="close-btn">Cancel</button>
+</div>
 
-<section class="contact fadeInPop">
-    <h2>Hubungi Support</h2>
-    <button class="waBtn" data-wa="+6287710238940" data-name="Adam">WhatsApp Adam</button>
-    <button class="waBtn" data-wa="+6283130830451" data-name="WoolCynder">WhatsApp WoolCynder</button>
-</section>
-
-<footer class="footer">
-    Copyright © Foxzi All Right 2025
+<footer>
+  <p>© 2025 Copyright Foxzi | All Rights Reserved</p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
