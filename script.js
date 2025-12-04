@@ -1,17 +1,16 @@
-// BUY BUTTON WHATSAPP SELECTOR
-document.querySelectorAll('.buyBtn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const plan = btn.parentElement.getAttribute("data-plan");
-        alert(`Pilih WhatsApp Support untuk membeli: ${plan}`);
-    });
-});
+let selectedProduct = "";
 
-// WA SUPPORT MESSAGE SENDER
-document.querySelectorAll('.waBtn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const number = btn.getAttribute("data-wa");
-        const name = btn.getAttribute("data-name");
-        const message = encodeURIComponent(`Halo ${name}, saya ingin membeli panel!`);
-        window.location.href = `https://wa.me/${number}?text=${message}`;
-    });
-});
+function chooseWA(product) {
+  selectedProduct = product;
+  document.getElementById("wa-popup").style.display = "block";
+}
+
+function sendWA(admin) {
+  let number = admin === 1 ? "6287710238940" : "6283130830451";
+  let msg = `Halo Admin, saya ingin membeli panel ${selectedProduct}`;
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
+}
+
+function closePopup() {
+  document.getElementById("wa-popup").style.display = "none";
+}
