@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxzi Cyber Panel Shop - Mobile</title>
+    <!-- Memuat Tailwind CSS untuk utilitas dasar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tautan ke CSS kustom (Untuk styling, glow, dan transisi) -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<!-- Class 'initial-load' digunakan untuk memicu transisi fade-in saat JS dimuat -->
+<body class="cyber-bg min-h-screen initial-load"> 
+
+    <!-- Kontainer Utama Aplikasi -->
+    <div id="app" class="max-w-xl mx-auto p-4">
+
+        <!-- 1. HEADER & NAVIGASI (FULL VERTICAL) -->
+        <header class="flex flex-col justify-center items-center py-4 border-b border-cyan-400/30 mb-6">
+            <div class="flex flex-col items-center space-y-3 mb-4">
+                <img id="logo" src="https://files.catbox.moe/9fienz.jpg" alt="Foxzi Logo" class="h-12 w-12 rounded-full border-2 border-cyan-400 object-cover">
+                <h1 class="text-3xl font-extrabold text-neon uppercase tracking-wider text-center">FOXZI PANEL</h1>
+            </div>
+
+            <!-- Navigasi Utama -->
+            <nav id="main-nav" class="flex flex-col text-lg font-medium w-full mt-4 border-t border-b border-cyan-400/30 divide-y divide-cyan-400/10">
+                <a href="#" onclick="showView('home')" class="nav-link">Home</a>
+                <a href="#" onclick="showShopWithDelay()" class="nav-link">Shop Panel</a>
+                <a href="#" onclick="showView('blog')" class="nav-link">Blog Artikel</a>
+                <a href="#" onclick="showView('admin')" class="nav-link">Panel Admin</a>
+            </nav>
+        </header>
+
+        <!-- 2. Konten Utama (Single Page Application Simulation) -->
+        <main class="py-4">
+            <!-- Loading State untuk Shop -->
+            <section id="loading-view" class="view hidden text-center p-10">
+                <div class="animate-spin inline-block w-10 h-10 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
+                <p id="loading-message" class="text-xl text-cyan-400">Memuat etalase produk... (4 detik)</p>
+            </section>
+
+            <!-- Home View -->
+            <section id="home-view" class="view">
+                <h2 class="text-3xl font-bold mb-6 text-center text-cyan-400/90">Layanan Panel Pterodactyl Terbaik</h2>
+                <p class="text-center text-gray-300 mb-8">Kami menyediakan solusi panel Pterodactyl dengan teknologi cyber terbaru, uptime yang tak tertandingi, dan keamanan berlapis.</p>
+
+                <!-- Fitur Unggulan (FULL VERTICAL - 1 kolom) -->
+                <div id="features-list" class="grid grid-cols-1 gap-4 mb-10">
+                    <!-- Fitur akan diinisialisasi oleh JS -->
+                </div>
+
+                <div class="text-center">
+                    <!-- Tombol Sedang -->
+                    <button onclick="showShopWithDelay()" class="glow-button max-w-xs mx-auto block px-8 py-3 rounded-xl bg-cyan-600 text-white font-bold text-xl hover:bg-cyan-500 transition duration-300">
+                        Pesan Panel Anda Sekarang!
+                    </button>
+                </div>
+            </section>
+
+            <!-- Shop View -->
+            <section id="shop-view" class="view hidden">
+                <h2 class="text-3xl font-bold mb-6 text-neon">Etalase Panel Pterodactyl</h2>
+                <!-- Produk (FULL VERTICAL - 1 kolom) -->
+                <div id="product-list" class="grid grid-cols-1 gap-4">
+                    <!-- Produk akan diinisialisasi oleh JS -->
+                </div>
+            </section>
+            
+            <!-- Blog View (FULL VERTICAL) -->
+            <section id="blog-view" class="view hidden">
+                <h2 class="text-3xl font-bold mb-6 text-neon">Blog & Artikel Teknologi</h2>
+                <div class="space-y-4">
+                    <!-- Artikel Mockup 1 -->
+                    <article class="p-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-cyan-400/70 transition duration-300">
+                        <h3 class="text-lg font-bold text-cyan-400 mb-1">Mengapa Pterodactyl Panel Adalah Pilihan Tepat?</h3>
+                        <p class="text-gray-400 mb-3 text-sm">Pelajari keunggulan Pterodactyl dibandingkan panel server lain...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 text-xs">Baca Selengkapnya →</a>
+                    </article>
+                    <!-- Artikel Mockup 2 -->
+                    <article class="p-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-cyan-400/70 transition duration-300">
+                        <h3 class="text-lg font-bold text-cyan-400 mb-1">Tips Optimalisasi Uptime Server di Foxzi</h3>
+                        <p class="text-gray-400 mb-3 text-sm">Kami membagikan tips rahasia untuk memastikan server Anda berjalan 24/7...</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 text-xs">Baca Selengkapnya →</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Admin Panel View (Placeholder) -->
+            <section id="admin-view" class="view hidden text-center p-8 bg-gray-800/50 rounded-xl border border-red-500/50">
+                <div class="text-6xl mb-4 text-red-500" data-lucide="shield-alert"></div>
+                <h2 class="text-2xl font-bold mb-3 text-red-400">Akses Dibatasi</h2>
+                <p class="text-gray-400 text-sm">Panel ini ditujukan hanya untuk Administrator Foxzi.</p>
+                <button onclick="showView('home')" class="mt-4 px-5 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition duration-300 text-sm">Kembali ke Home</button>
+            </section>
+
+        </main>
+
+        <!-- 3. CONTACT SUPPORT (WhatsApp) - FULL VERTICAL -->
+        <section class="mt-8 pt-6 border-t border-cyan-400/30">
+            <h3 class="text-xl font-bold mb-4 text-neon text-center">Contact Support (Layanan Pelanggan 24/7)</h3>
+            <p class="text-center text-gray-400 text-sm mb-6">Pilih salah satu kontak support kami via WhatsApp.</p>
+            <div class="flex flex-col space-y-3">
+                <button onclick="showAdminConfirmation('Adam', '6287710238940')"
+                   class="glow-button flex items-center justify-center space-x-2 w-full px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white rounded-lg font-semibold transition duration-300">
+                    <div data-lucide="message-square" class="w-5 h-5"></div>
+                    <span>Hubungi Adam</span>
+                </button>
+                
+                <button onclick="showAdminConfirmation('WoolCynder', '6283130830451')"
+                   class="glow-button flex items-center justify-center space-x-2 w-full px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white rounded-lg font-semibold transition duration-300">
+                    <div data-lucide="message-square" class="w-5 h-5"></div>
+                    <span>Hubungi WoolCynder</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 4. FOOTER (Watermark) -->
+        <footer class="mt-8 pt-4 pb-4 text-center text-gray-500 text-xs border-t border-gray-700/50">
+            <p class="text-neon/70 font-mono">Copyright foxzi All Right 2025</p>
+        </footer>
+
+    </div>
+
+    <!-- 5. Modals (Popups) -->
+
+    <!-- Modal Konfirmasi Admin WhatsApp -->
+    <div id="admin-confirm-modal" class="modal hidden fixed inset-0 z-50 justify-center items-center backdrop-blur-sm">
+        <div class="bg-gray-900 border-2 border-cyan-400/70 p-6 rounded-xl w-11/12 max-w-sm shadow-2xl shadow-cyan-500/20 text-center">
+            <h3 class="text-xl font-bold text-neon mb-4" id="admin-confirm-title"></h3>
+            <p class="text-gray-300 mb-6">Apakah kamu yakin akan menghubungi admin ini?</p>
+            <div class="flex justify-center space-x-4">
+                <button id="admin-confirm-yes" class="glow-button px-6 py-2 bg-green-600 hover:bg-green-500 rounded-lg font-semibold">Iya</button>
+                <button onclick="closeAdminConfirmation()" class="glow-button px-6 py-2 bg-red-600 hover:bg-red-500 rounded-lg font-semibold">Tidak</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Loading Admin WhatsApp -->
+    <div id="admin-loading-modal" class="modal hidden fixed inset-0 z-50 justify-center items-center backdrop-blur-sm">
+        <div class="bg-gray-900 border-2 border-cyan-400/70 p-6 rounded-xl w-11/12 max-w-sm shadow-2xl shadow-cyan-500/20 text-center">
+            <div class="animate-spin inline-block w-8 h-8 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
+            <p class="text-cyan-400 font-semibold mb-2">Baik, mohon tunggu...</p>
+            <p class="text-gray-300" id="admin-loading-timer">Menghubungkan ke Admin dalam 10 detik.</p>
+        </div>
+    </div>
+
+    <!-- Modal Pilih Admin Setelah Pembelian -->
+    <div id="buy-now-modal" class="modal hidden fixed inset-0 z-50 justify-center items-center backdrop-blur-sm">
+        <div class="bg-gray-900 border-2 border-cyan-400/70 p-6 rounded-xl w-11/12 max-w-md shadow-2xl shadow-cyan-500/20 text-center">
+            <h3 class="text-xl font-bold text-neon mb-4">Pilih Admin untuk Pembelian</h3>
+            <p class="text-gray-300 mb-6">Anda akan membeli <span id="purchase-item-name" class="font-bold text-white"></span>. Total: <span id="purchase-item-price" class="font-bold text-neon"></span>. Silakan pilih admin untuk melanjutkan pembayaran dan pengiriman panel.</p>
+            <div class="flex flex-col space-y-3">
+                <button onclick="confirmAdmin('Adam', '6287710238940')" class="glow-button px-6 py-3 bg-cyan-700 hover:bg-cyan-600 rounded-lg font-semibold">Hubungi Adam</button>
+                <button onclick="confirmAdmin('WoolCynder', '6283130830451')" class="glow-button px-6 py-3 bg-cyan-700 hover:bg-cyan-600 rounded-lg font-semibold">Hubungi WoolCynder</button>
+                <button onclick="closeBuyNowModal()" class="mt-4 text-gray-400 hover:text-white">Batalkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tautan ke file JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
