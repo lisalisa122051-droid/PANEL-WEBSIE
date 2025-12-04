@@ -1,82 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foxzi Panel Pterodactyl Shop</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxzi Cyber Panel Shop - Tampilan Mobile Vertikal</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<header class="glow-header">
-  <img src="https://files.catbox.moe/9fienz.jpg" class="logo">
-  <h1>FOXZI PANEL STORE</h1>
-</header>
+<body class="cyber-bg min-h-screen initial-load">
 
-<section class="features">
-  <h2>🔥 Fitur Unggulan Kami</h2>
-  <div class="feature-box">
-    <div><span>🔐</span> Keamanan Berlapis</div>
-    <div><span🛡️</span> Anti Pencurian Panel</div>
-    <div><span>🗄️</span> Database 837+ Deploy</div>
-    <div><span>📶</span> Uptime 99.7%</div>
-    <div><span>🌍</span> Jaringan Global</div>
-    <div><span>🤝</span> Layanan Pelanggan</div>
-  </div>
-</section>
+    <div id="app" class="max-w-xl mx-auto p-4">
 
-<section class="products">
-  <h2>📦 Paket Panel Pterodactyl</h2>
+        <!-- HEADER -->
+        <header class="flex flex-col justify-center items-center py-4 border-b border-cyan-400/30 mb-6">
+            <div class="flex flex-col items-center space-y-3 mb-4">
+                <img id="logo" src="https://files.catbox.moe/9fienz.jpg" class="h-12 w-12 rounded-full border-2 border-cyan-400 object-cover">
+                <h1 class="text-3xl font-extrabold text-neon uppercase tracking-wider text-center">FOXZI PANEL</h1>
+            </div>
 
-  <div class="product-card" data-price="1K">
-    <h3>2 GB PANEL</h3>
-    <p>💠 Cocok untuk bot medium</p>
-    <p>✔ Full Access Panel & Node</p>
-    <p>✔ Anti Suspend System</p>
-    <p>💰 Harga: <span class="price">1K</span></p>
-    <button class="buy-btn" onclick="chooseWA('2GB - 1K')">Buy Now</button>
-  </div>
+            <!-- NAV -->
+            <nav id="main-nav" class="flex flex-col text-lg font-medium w-full mt-4 border-t border-b border-cyan-400/30 divide-y divide-cyan-400/10">
+                <a href="#" onclick="showView('home')" class="nav-link">Home</a>
+                <a href="#" onclick="showShopWithDelay()" class="nav-link">Shop Panel</a>
+                <a href="#" onclick="showView('blog')" class="nav-link">Blog Artikel</a>
+                <a href="#" onclick="showView('admin')" class="nav-link">Panel Admin</a>
+            </nav>
+        </header>
 
-  <div class="product-card" data-price="3K">
-    <h3>5 GB PANEL</h3>
-    <p>💠 Sangat Stabil & Powerfull</p>
-    <p>✔ Anti Loss Data</p>
-    <p>✔ Include SSL Security</p>
-    <p>💰 Harga: <span class="price">3K</span></p>
-    <button class="buy-btn" onclick="chooseWA('5GB - 3K')">Buy Now</button>
-  </div>
+        <!-- VIEWS -->
+        <main class="py-4">
 
-  <div class="product-card" data-price="7K">
-    <h3>10 GB PANEL</h3>
-    <p>💠 High Performance Runtime</p>
-    <p>✔ Premium Infrastructure</p>
-    <p>✔ Extreme Stability</p>
-    <p>💰 Harga: <span class="price">7K</span></p>
-    <button class="buy-btn" onclick="chooseWA('10GB - 7K')">Buy Now</button>
-  </div>
+            <section id="loading-view" class="view hidden text-center p-10">
+                <div class="animate-spin inline-block w-10 h-10 border-4 border-cyan-500 border-t-transparent rounded-full mb-4"></div>
+                <p id="loading-message" class="text-xl text-cyan-400"></p>
+            </section>
 
-  <div class="product-card" data-price="10K">
-    <h3>UNLIMITED PANEL</h3>
-    <p>💠 Unlimited RAM & CPU</p>
-    <p>✔ Dedicated Security System</p>
-    <p>✔ Auto Scaling Resources</p>
-    <p>💰 Harga: <span class="price">10K</span></p>
-    <button class="buy-btn" onclick="chooseWA('UNLI - 10K')">Buy Now</button>
-  </div>
-</section>
+            <section id="home-view" class="view">
+                <h2 class="text-3xl font-bold mb-6 text-center text-cyan-400/90">Layanan Panel Pterodactyl Terbaik</h2>
+                <p class="text-center text-gray-300 mb-8">Kami menyediakan solusi panel Pterodactyl dengan teknologi cyber terbaru.</p>
+                <div id="features-list" class="grid grid-cols-1 gap-4 mb-10"></div>
+                <div class="text-center">
+                    <button onclick="showShopWithDelay()" class="glow-button max-w-xs mx-auto block px-8 py-3 rounded-xl bg-cyan-600 text-white font-bold text-xl hover:bg-cyan-500 transition duration-300">
+                        Pesan Panel Anda Sekarang!
+                    </button>
+                </div>
+            </section>
 
-<!-- WhatsApp Popup -->
-<div id="wa-popup" class="wa-popup">
-  <h3>Kirim via WhatsApp ke Admin?</h3>
-  <button onclick="sendWA(1)" class="wa-btn">WhatsApp Admin 1 (Adam)</button>
-  <button onclick="sendWA(2)" class="wa-btn">WhatsApp Admin 2 (WoolCynder)</button>
-  <button onclick="closePopup()" class="close-btn">Cancel</button>
-</div>
+            <section id="shop-view" class="view hidden">
+                <h2 class="text-3xl font-bold mb-6 text-neon">Etalase Panel Pterodactyl</h2>
+                <div id="product-list" class="grid grid-cols-1 gap-4"></div>
+            </section>
 
-<footer>
-  <p>© 2025 Copyright Foxzi | All Rights Reserved</p>
-</footer>
+            <section id="blog-view" class="view hidden">
+                <h2 class="text-3xl font-bold mb-6 text-neon">Blog & Artikel Teknologi</h2>
+                <div class="space-y-4">
+                    <article class="p-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-cyan-400/70 transition duration-300">
+                        <h3 class="text-lg font-bold text-cyan-400 mb-1">Mengapa Pterodactyl Panel Adalah Pilihan Tepat?</h3>
+                        <p class="text-gray-400 mb-3 text-sm">Pelajari keunggulan Pterodactyl dibanding panel lain...</p>
+                    </article>
+                    <article class="p-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-cyan-400/70 transition duration-300">
+                        <h3 class="text-lg font-bold text-cyan-400 mb-1">Tips Optimalisasi Uptime Server di Foxzi</h3>
+                        <p class="text-gray-400 mb-3 text-sm">Tips agar server berjalan 24/7...</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="admin-view" class="view hidden text-center p-8 bg-gray-800/50 rounded-xl border border-red-500/50">
+                <div class="text-6xl mb-4 text-red-500" data-lucide="shield-alert"></div>
+                <h2 class="text-2xl font-bold mb-3 text-red-400">Akses Dibatasi</h2>
+                <button onclick="showView('home')" class="mt-4 px-5 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg">Kembali ke Home</button>
+            </section>
+
+        </main>
+
+        <!-- CONTACT -->
+        <section class="mt-8 pt-6 border-t border-cyan-400/30">
+            <h3 class="text-xl font-bold mb-4 text-neon text-center">Contact Support Via WhatsApp</h3>
+            <div class="flex flex-col space-y-3">
+                <button onclick="showAdminConfirmation('Adam', '6287710238940')" class="glow-button flex items-center justify-center space-x-2 w-full px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white rounded-lg font-semibold">
+                    <span>Hubungi Adam</span>
+                </button>
+                <button onclick="showAdminConfirmation('WoolCynder', '6283130830451')" class="glow-button flex items-center justify-center space-x-2 w-full px-6 py-3 bg-cyan-700 hover:bg-cyan-600 text-white rounded-lg font-semibold">
+                    <span>Hubungi WoolCynder</span>
+                </button>
+            </div>
+        </section>
+
+        <footer class="mt-8 pt-4 pb-4 text-center text-gray-500 text-xs border-t border-gray-700/50">
+            <p class="text-neon/70 font-mono">Copyright foxzi All Right 2025</p>
+        </footer>
+
+    </div>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
 
 </body>
 </html>
