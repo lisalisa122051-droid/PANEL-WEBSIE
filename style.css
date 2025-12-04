@@ -1,77 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-
 body {
-  background: #020614;
-  font-family: Poppins, sans-serif;
-  margin: 0;
-  color: white;
-  text-align: center;
+    font-family: 'Inter', sans-serif;
+    background-color: #0d1117;
+    color: #fff;
 }
 
-.logo {
-  width: 90px; border-radius: 12px;
-  filter: drop-shadow(0 0 8px #00bfff);
+/* Fade Load */
+body.initial-load { opacity: 0; }
+body.is-loaded { opacity: 1; transition: opacity 1s ease-out; }
+
+/* NAV ANIMATION */
+.nav-link {
+    transition: all .3s ease;
+    position: relative;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 0;
+    text-align: center;
+}
+.nav-link:hover {
+    color: #4ff;
+    background-color: rgba(0,255,255,0.1);
+    text-shadow: 0 0 12px #0ff;
 }
 
-.glow-header {
-  padding: 20px;
-  background: #031d3b;
-  box-shadow: 0 0 20px #00bfff;
+/* PRODUCT & FEATURES */
+.product-card, .feature-card {
+    transition: all .3s ease, box-shadow .3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.product-card:active, .product-card.shining {
+    transform: scale(1.02);
+    border-color: #0ff !important;
+    box-shadow: 0 0 10px rgba(0,255,255,.8);
 }
 
-.features h2, .products h2 {
-  text-shadow: 0 0 10px #00bfff;
+/* GRID CYBER BACKGROUND */
+.cyber-bg {
+    background-image:
+        linear-gradient(rgba(15,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,255,255,.05) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
-.feature-box {
-  margin: auto; width: 90%;
-  display: grid; gap: 10px;
-  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
-  padding: 10px;
-}
-.feature-box div {
-  padding: 10px; font-size: 14px;
-  background: #04182c; border-radius: 10px;
-  border: 1px solid #0af;
-  box-shadow: 0 0 12px #006aff;
-  transition: 0.3s;
-}
-.feature-box div:hover { transform: scale(1.08); box-shadow: 0 0 25px #09f; }
-
-.products { margin-top: 50px; }
-.product-card {
-  width: 85%; margin: 20px auto; padding: 20px;
-  background: #062340; border-left: 4px solid #0af;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #0077ff;
-  transition: 0.3s;
-}
-.product-card:hover {
-  transform: scale(1.03) translateZ(10px);
-  box-shadow: 0 0 40px #00c3ff;
-}
-
-.buy-btn, .wa-btn, .close-btn {
-  margin-top: 10px; padding: 12px 20px;
-  border: none; cursor: pointer;
-  border-radius: 7px; font-weight: 700;
-  background: #007eff;
-  color: white; text-shadow: 0 0 7px blue;
-  box-shadow: 0 0 18px #0094ff;
-  transition: 0.2s;
-}
-.buy-btn:hover, .wa-btn:hover, .close-btn:hover {
-  box-shadow: 0 0 28px #00c3ff;
-  transform: scale(1.08);
-  filter: brightness(140%);
-}
-
-.wa-popup {
-  display: none; position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: #021224; padding: 25px;
-  border-radius: 15px; box-shadow: 0 0 25px #00b2ff;
-  width: 260px; z-index: 1000;
-}
-footer { margin-top: 50px; padding: 20px; background: #031d3b; }
+.text-neon { color: #0ff; text-shadow: 0 0 8px #0ff; }
+.glow-button { transition: all .3s ease; }
+.glow-button:hover { box-shadow: 0 0 15px #0ff; background-color: rgba(0,255,255,.2); }
