@@ -1,112 +1,77 @@
-* {
-    margin: 0; padding: 0;
-    box-sizing: border-box;
-    font-family: Poppins, sans-serif;
-    scroll-behavior: smooth;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 body {
-    background: #020a18;
-    color: #fff;
+  background: #020614;
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  color: white;
+  text-align: center;
 }
 
-/* ========= GLOBAL ANIMATIONS ========= */
-.fadeInPop {
-    animation: fadeInPop .8s ease forwards;
-    opacity: 0;
-}
-@keyframes fadeInPop {
-    0% { opacity:0; transform: scale(.85); }
-    100% { opacity:1; transform: scale(1); }
-}
-
-/* ========= NAVBAR ========= */
-.navbar {
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-    background: rgba(0,0,30,.6);
-    backdrop-filter: blur(10px);
-}
 .logo {
-    width: 45px; margin-right: 15px; border-radius: 50%;
-    filter: drop-shadow(0 0 10px cyan);
-}
-.title { font-size: 24px; color: cyan; text-shadow: 0 0 10px cyan; }
-
-/* ========= HERO ========= */
-.hero {
-    text-align: center; padding: 40px 0;
-}
-.hero h2 {
-    color: #00eaff;
-    text-shadow: 0 0 20px #00eaff;
-    font-size: 28px;
-}
-.sub { color: #a8b2d1; }
-
-/* ========= PRODUCT CARD ========= */
-.product-grid {
-    display: grid; gap: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-    padding: 30px;
-}
-.card {
-    padding: 25px;
-    background: rgba(0,10,30,.7);
-    border-radius: 15px;
-    text-align: center;
-    transition: .3s;
-    border: 1px solid cyan;
-    box-shadow: 0 0 10px cyan;
-    cursor: pointer;
+  width: 90px; border-radius: 12px;
+  filter: drop-shadow(0 0 8px #00bfff);
 }
 
-/* 3D Touch + Glow Hover */
-.card:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 0 25px #00eaff, 0 0 55px #00eaff;
+.glow-header {
+  padding: 20px;
+  background: #031d3b;
+  box-shadow: 0 0 20px #00bfff;
 }
 
-/* Button With Shine Effect */
-.buyBtn {
-    background: #00121e;
-    color: cyan;
-    margin-top: 10px;
-    padding: 7px 15px;
-    border-radius: 10px;
-    border: 1px solid cyan;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-.buyBtn::after {
-    content:"";
-    position:absolute; top:0; left:-100%;
-    width:100%; height:100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,.6), transparent);
-    animation: shine 2s infinite;
-}
-@keyframes shine {
-    0% { left:-100%; }
-    100% { left:100%; }
+.features h2, .products h2 {
+  text-shadow: 0 0 10px #00bfff;
 }
 
-.features, .contact {
-    text-align: center; padding: 30px;
+.feature-box {
+  margin: auto; width: 90%;
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  padding: 10px;
+}
+.feature-box div {
+  padding: 10px; font-size: 14px;
+  background: #04182c; border-radius: 10px;
+  border: 1px solid #0af;
+  box-shadow: 0 0 12px #006aff;
+  transition: 0.3s;
+}
+.feature-box div:hover { transform: scale(1.08); box-shadow: 0 0 25px #09f; }
+
+.products { margin-top: 50px; }
+.product-card {
+  width: 85%; margin: 20px auto; padding: 20px;
+  background: #062340; border-left: 4px solid #0af;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #0077ff;
+  transition: 0.3s;
+}
+.product-card:hover {
+  transform: scale(1.03) translateZ(10px);
+  box-shadow: 0 0 40px #00c3ff;
 }
 
-.contact button {
-    margin: 10px; padding: 10px 20px;
-    border-radius: 10px; border: 1px solid #fff;
-    background: #003450; color: cyan;
-    transition: .3s;
+.buy-btn, .wa-btn, .close-btn {
+  margin-top: 10px; padding: 12px 20px;
+  border: none; cursor: pointer;
+  border-radius: 7px; font-weight: 700;
+  background: #007eff;
+  color: white; text-shadow: 0 0 7px blue;
+  box-shadow: 0 0 18px #0094ff;
+  transition: 0.2s;
 }
-.contact button:hover {
-    box-shadow: 0 0 15px cyan; transform: scale(1.05);
+.buy-btn:hover, .wa-btn:hover, .close-btn:hover {
+  box-shadow: 0 0 28px #00c3ff;
+  transform: scale(1.08);
+  filter: brightness(140%);
 }
 
-/* FOOTER */
-.footer {
-    text-align: center; padding: 20px; margin-top: 30px;
-    background: rgba(0,0,0,.4);
+.wa-popup {
+  display: none; position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #021224; padding: 25px;
+  border-radius: 15px; box-shadow: 0 0 25px #00b2ff;
+  width: 260px; z-index: 1000;
 }
+footer { margin-top: 50px; padding: 20px; background: #031d3b; }
